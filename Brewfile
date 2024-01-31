@@ -286,6 +286,8 @@ brew "pcre"
 brew "pyenv"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Python 2 and 3 compatibility utilities
@@ -298,6 +300,8 @@ brew "thefuck"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Internet file retriever
+brew "wget"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # UNIX shell (command interpreter)
