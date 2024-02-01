@@ -110,6 +110,8 @@ brew "coreutils"
 brew "dav1d"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Ogg Bitstream Library
@@ -226,6 +228,8 @@ brew "zeromq"
 brew "zimg"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Distributed revision control system
 brew "git"
 # Generic library support script
@@ -304,6 +308,8 @@ brew "tree"
 brew "wget"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # A simple terminal UI for git commands, written in Go
@@ -448,3 +454,6 @@ cask "yacreader"
 cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
+vscode "fivethree.vscode-svelte-snippets"
+vscode "jeff-hykin.better-cpp-syntax"
+vscode "SirTori.indenticator"
