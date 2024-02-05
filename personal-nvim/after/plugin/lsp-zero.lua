@@ -17,10 +17,23 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+local cmp_format = require('lsp-zero').cmp_format()
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+  sources = {
+    {name = 'nvim_lua'},
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+  },
+  preselect = 'item',
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
   mapping = cmp.mapping.preset.insert({
-    ['<Tab>'] = cmp_action.tab_complete(),
-    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-  })
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+  }),
+  formatting = cmp_format,
 })
