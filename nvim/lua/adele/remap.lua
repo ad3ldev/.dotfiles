@@ -11,3 +11,4 @@ vim.keymap.set("v", "<leader>d", "\"_d", {desc="Delete to void register"})
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc="Change to executable file"})
 vim.keymap.set("n", "<leader>t", "<cmd>Neotree toggle<CR>", {desc="Toggle Neotree"})
+vim.keymap.set("n", "<leader>tw", "<cmd>Twilight<CR>", {desc="Toggle Twilight"})
