@@ -37,3 +37,12 @@ cmp.setup({
   }),
   formatting = cmp_format,
 })
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({buffer = bufnr})
+
+  -- make sure you use clients with formatting capabilities
+  -- otherwise you'll get a warning message
+  if client.supports_method('textDocument/formatting') then
+    require('lsp-format').on_attach(client)
+  end
+end)
