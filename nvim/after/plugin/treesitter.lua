@@ -6,7 +6,6 @@ require'nvim-treesitter.configs'.setup {
         "vimdoc", 
         "javascript",
         "typescript",
-        "svelte",
     },
     sync_install = false,
     auto_install = true,
