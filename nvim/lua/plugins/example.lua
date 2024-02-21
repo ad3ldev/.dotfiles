@@ -1,6 +1,6 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+if true then return {{ "ThePrimeagen/vim-be-good" }}end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
@@ -11,7 +11,6 @@ if true then return {} end
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
-
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
