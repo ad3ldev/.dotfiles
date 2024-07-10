@@ -58,5 +58,7 @@ eval "$(zoxide init zsh)"
 # To customize prompt, run `p10k configure` or edit ~/Desktop/Dev/.dotfiles/.p10k.zsh.
 [[ ! -f ~/Desktop/Dev/.dotfiles/.p10k.zsh ]] || source ~/Desktop/Dev/.dotfiles/.p10k.zsh
 
+export PATH="/opt/homebrew/opt/cython/bin:$PATH"
+
 # Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
