@@ -1,5 +1,3 @@
-# Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -27,7 +25,6 @@ plugins=(
 	zsh-autosuggestions
 	zsh-history-substring-search
 	zsh-syntax-highlighting
-    zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -49,8 +46,6 @@ eval "$(pyenv virtualenv-init -)"
 
 # pyenv end
 
-
-
 eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -60,9 +55,6 @@ eval "$(zoxide init zsh)"
 [[ ! -f ~/Desktop/Dev/.dotfiles/.p10k.zsh ]] || source ~/Desktop/Dev/.dotfiles/.p10k.zsh
 
 export PATH="/opt/homebrew/opt/cython/bin:$PATH"
-
-# Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
 
 # fnm
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"

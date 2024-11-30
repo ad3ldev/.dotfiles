@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/bash_profile.pre.bash" ]] && builtin source "$HOME/.fig/shell/bash_profile.pre.bash"
 eval 
             fuck () {
                 TF_PYTHONIOENCODING=$PYTHONIOENCODING;
@@ -17,6 +15,3 @@ eval
                 export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
                 test -n "$TF_CMD" && print -s $TF_CMD
             }
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/bash_profile.post.bash" ]] && builtin source "$HOME/.fig/shell/bash_profile.post.bash"
