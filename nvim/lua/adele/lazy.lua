@@ -20,7 +20,6 @@ require("lazy").setup({
 	spec = {
 		{ import = "adele.plugins" },
 	},
-	checker = { enabled = true },
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
