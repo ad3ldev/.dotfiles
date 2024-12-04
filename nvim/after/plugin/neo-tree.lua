@@ -6,6 +6,7 @@ require("neo-tree").setup({
 			hide_gitignored = false,
 			hide_by_name = {
 				"node_modules",
+				".vscode",
 			},
 			never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 				".DS_Store",
