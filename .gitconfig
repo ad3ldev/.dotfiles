@@ -5,7 +5,7 @@
 	process = git-lfs filter-process
 [user]
 	name = AbdelRahman Adel AbdelFatttah
-	email = 56457765+ad3ldev@users.noreply.github.com
+	email = ad3ldev@gmail.com
 [init]
 	defaultBranch = main
 [core]
