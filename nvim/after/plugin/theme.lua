@@ -5,4 +5,4 @@ require("tokyonight").setup({
 		vim.api.nvim_set_hl(0, "LineNrBelow", { fg = colors.comment })
 	end,
 })
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("tokyonight")
