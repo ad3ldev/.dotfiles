@@ -1,15 +1,14 @@
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 
+local grug_far = require("grug-far")
 local harpoon = require("harpoon")
--- REQUIRED
+
 harpoon:setup()
--- REQUIRED
+grug_far.setup({})
 
 vim.keymap.set("n", "<leader>a", function()
 	harpoon:list():add()
 end, { desc = "Add to Harpoon" })
-
--- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<C-S-P>", function()
 	harpoon:list():prev()
 end, { desc = "Previous Harpoon file" })
