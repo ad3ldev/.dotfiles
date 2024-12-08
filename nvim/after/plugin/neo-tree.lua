@@ -1,4 +1,6 @@
-require("neo-tree").setup({
+local neotree = require("neo-tree")
+neotree.setup({
+	sources = { "filesystem", "buffers", "git_status" },
 	filesystem = {
 		filtered_items = {
 			visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"

@@ -44,7 +44,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 local servers = {
 	lua_ls = {
 		settings = {
@@ -56,13 +55,19 @@ local servers = {
 		},
 	},
 }
-require("mason").setup()
+local mason = require("mason")
 local ensure_installed = vim.tbl_keys(servers or {})
+local mason_tool_installer = require("mason-tool-installer")
+local mason_lspconfig = require("mason-lspconfig")
+local nvim_lspconfig = require("lspconfig")
+
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+mason.setup()
 vim.list_extend(ensure_installed, {
 	"stylua", -- Used to format Lua code
 })
-require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-require("mason-lspconfig").setup({
+mason_tool_installer.setup({ ensure_installed = ensure_installed })
+mason_lspconfig.setup({
 	handlers = {
 		function(server_name)
 			local server = servers[server_name] or {}
@@ -71,3 +76,72 @@ require("mason-lspconfig").setup({
 		end,
 	},
 })
+-- nvim_lspconfig.setup({
+-- 	function()
+-- 		---@class PluginLspOpts
+-- 		local ret = {
+-- 			---@type vim.diagnostic.Opts
+-- 			diagnostics = {
+-- 				underline = true,
+-- 				update_in_insert = false,
+-- 				virtual_text = {
+-- 					spacing = 4,
+-- 					source = "if_many",
+-- 					prefix = "icons",
+-- 				},
+-- 				severity_sort = true,
+-- 			},
+-- 			inlay_hints = {
+-- 				enabled = true,
+-- 			},
+-- 			codelens = {
+-- 				enabled = true,
+-- 			},
+-- 			document_highlight = {
+-- 				enabled = true,
+-- 			},
+-- 			capabilities = {
+-- 				workspace = {
+-- 					fileOperations = {
+-- 						didRename = true,
+-- 						willRename = true,
+-- 					},
+-- 				},
+-- 			},
+-- 			format = {
+-- 				formatting_options = nil,
+-- 				timeout_ms = nil,
+-- 			},
+-- 			---@type lspconfig.options
+-- 			servers = {
+-- 				lua_ls = {
+-- 					settings = {
+-- 						Lua = {
+-- 							workspace = {
+-- 								checkThirdParty = false,
+-- 							},
+-- 							codeLens = {
+-- 								enable = true,
+-- 							},
+-- 							completion = {
+-- 								callSnippet = "Replace",
+-- 							},
+-- 							doc = {
+-- 								privateName = { "^_" },
+-- 							},
+-- 							hint = {
+-- 								enable = true,
+-- 								setType = false,
+-- 								paramType = true,
+-- 								paramName = "Disable",
+-- 								semicolon = "Disable",
+-- 								arrayIndex = "Disable",
+-- 							},
+-- 						},
+-- 					},
+-- 				},
+-- 			},
+-- 		}
+-- 		return ret
+-- 	end,
+-- })

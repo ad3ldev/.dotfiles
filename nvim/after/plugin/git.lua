@@ -1,3 +1,7 @@
+local gitsigns = require("gitsigns")
+
+gitsigns.setup()
+
 vim.keymap.set("n", "<leader>gs", function()
 	vim.cmd("vertical Git")
 end, { desc = "Open Git" })

@@ -1,11 +1,12 @@
-local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 
+local harpoon = require("harpoon")
 -- REQUIRED
 harpoon:setup()
 -- REQUIRED
 
 vim.keymap.set("n", "<leader>a", function()
-	harpoon:list():append()
+	harpoon:list():add()
 end, { desc = "Add to Harpoon" })
 vim.keymap.set("n", "<C-h>", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())

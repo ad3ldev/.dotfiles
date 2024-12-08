@@ -1,15 +1,15 @@
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
+	cmd = "ConformInfo",
 	keys = {
 		{
-			"<leader>f",
+			"<leader>cF",
 			function()
-				require("conform").format({ async = true, lsp_format = "fallback" })
+				require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
 			end,
-			mode = "",
-			desc = "[F]ormat buffer",
+			mode = { "n", "v" },
+			desc = "Format Injected Langs",
 		},
 	},
 	opts = {
