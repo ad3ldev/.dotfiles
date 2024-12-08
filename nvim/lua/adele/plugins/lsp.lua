@@ -81,6 +81,26 @@ return {
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{ "j-hui/fidget.nvim", opts = {} },
 			"hrsh7th/cmp-nvim-lsp",
+			{
+				"folke/neoconf.nvim",
+				cmd = "Neoconf",
+				opts = {},
+			},
 		},
+	},
+	{
+		"nvimtools/none-ls.nvim",
+		dependencies = { "mason.nvim" },
+		opts = function(_, opts)
+			local nls = require("null-ls")
+			opts.root_dir = opts.root_dir
+				or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
+			opts.sources = vim.list_extend(opts.sources or {}, {
+				nls.builtins.formatting.fish_indent,
+				nls.builtins.diagnostics.fish,
+				nls.builtins.formatting.stylua,
+				nls.builtins.formatting.shfmt,
+			})
+		end,
 	},
 }

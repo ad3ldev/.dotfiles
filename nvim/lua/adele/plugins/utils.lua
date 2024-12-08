@@ -3,6 +3,39 @@ return {
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		settings = {
+			save_on_toggle = true,
+		},
+		keys = function()
+			local keys = {
+				{
+					"<leader>H",
+					function()
+						require("harpoon"):list():add()
+					end,
+					desc = "Harpoon File",
+				},
+				{
+					"<leader>h",
+					function()
+						local harpoon = require("harpoon")
+						harpoon.ui:toggle_quick_menu(harpoon:list())
+					end,
+					desc = "Harpoon Quick Menu",
+				},
+			}
+
+			for i = 1, 5 do
+				table.insert(keys, {
+					"<leader>" .. i,
+					function()
+						require("harpoon"):list():select(i)
+					end,
+					desc = "Harpoon to File " .. i,
+				})
+			end
+			return keys
+		end,
 	},
 	{
 		"mbbill/undotree",
@@ -50,4 +83,41 @@ return {
 		},
 	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
+	{
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+		config = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
+	{
+		"mistweaverco/kulala.nvim",
+		ft = "http",
+		keys = {
+			{ "<leader>R", "", desc = "+Rest", ft = "http" },
+			{ "<leader>Rb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad", ft = "http" },
+			{ "<leader>Rc", "<cmd>lua require('kulala').copy()<cr>", desc = "Copy as cURL", ft = "http" },
+			{ "<leader>RC", "<cmd>lua require('kulala').from_curl()<cr>", desc = "Paste from curl", ft = "http" },
+			{
+				"<leader>Rg",
+				"<cmd>lua require('kulala').download_graphql_schema()<cr>",
+				desc = "Download GraphQL schema",
+				ft = "http",
+			},
+			{ "<leader>Ri", "<cmd>lua require('kulala').inspect()<cr>", desc = "Inspect current request", ft = "http" },
+			{ "<leader>Rn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request", ft = "http" },
+			{
+				"<leader>Rp",
+				"<cmd>lua require('kulala').jump_prev()<cr>",
+				desc = "Jump to previous request",
+				ft = "http",
+			},
+			{ "<leader>Rq", "<cmd>lua require('kulala').close()<cr>", desc = "Close window", ft = "http" },
+			{ "<leader>Rr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request", ft = "http" },
+			{ "<leader>Rs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request", ft = "http" },
+			{ "<leader>RS", "<cmd>lua require('kulala').show_stats()<cr>", desc = "Show stats", ft = "http" },
+			{ "<leader>Rt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body", ft = "http" },
+		},
+		opts = {},
+	},
 }

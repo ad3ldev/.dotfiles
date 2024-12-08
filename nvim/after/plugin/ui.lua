@@ -19,6 +19,8 @@ lualine.setup({
 barbecue.setup({
 	theme = "tokyonight",
 })
-ibl.setup()
+ibl.setup({
+	scope = { enabled = false },
+})
 
 vim.cmd.colorscheme("tokyonight")
