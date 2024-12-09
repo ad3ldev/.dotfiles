@@ -2,7 +2,6 @@ local ai = require("mini.ai")
 local surround = require("mini.surround")
 local comment = require("mini.comment")
 local pairs = require("mini.pairs")
-local statusline = require("mini.statusline")
 local icons = require("mini.icons")
 ai.setup({
 	n_lines = 500,
@@ -34,7 +33,6 @@ pairs.setup({
 	skip_unbalanced = true,
 	markdown = true,
 })
-statusline.setup({ use_icons = vim.g.have_nerd_font })
 icons.setup({
 	file = {
 		[".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },

@@ -1,9 +1,8 @@
-local bufferline = require("bufferline")
 local tokyonight = require("tokyonight")
 local lualine = require("lualine")
 local barbecue = require("barbecue")
 local ibl = require("ibl")
-bufferline.setup()
+
 tokyonight.setup({
 	on_colors = function(colors)
 		vim.api.nvim_set_hl(0, "LineNrAbove", { fg = colors.comment })
