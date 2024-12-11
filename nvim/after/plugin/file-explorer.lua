@@ -1,4 +1,5 @@
 local neotree = require("neo-tree")
+local oil = require("oil")
 neotree.setup({
 	sources = { "filesystem", "buffers", "git_status" },
 	filesystem = {
@@ -18,3 +19,4 @@ neotree.setup({
 		},
 	},
 })
+oil.setup()
