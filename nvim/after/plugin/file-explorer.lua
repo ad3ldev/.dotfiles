@@ -19,4 +19,6 @@ neotree.setup({
 		},
 	},
 })
+
 oil.setup()
+vim.keymap.set("n", "<leader>-", oil.toggle_float)
