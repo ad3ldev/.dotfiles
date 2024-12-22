@@ -13,9 +13,11 @@ return {
 		},
 	},
 	opts = {
+		async = true,
+		lsp_fallback = true,
 		notify_on_error = false,
 		format_on_save = function(bufnr)
-			local disable_filetypes = { c = true, cpp = true }
+			local disable_filetypes = {}
 			local lsp_format_opt
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				lsp_format_opt = "never"
@@ -29,6 +31,12 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
+			css = { "prettier" },
+			html = { "prettier" },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescriptreact = { "prettier" },
 		},
 	},
 }
