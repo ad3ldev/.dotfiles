@@ -59,7 +59,7 @@ local mason = require("mason")
 local ensure_installed = vim.tbl_keys(servers or {})
 local mason_tool_installer = require("mason-tool-installer")
 local mason_lspconfig = require("mason-lspconfig")
--- local nvim_lspconfig = require("lspconfig")
+local nvim_lspconfig = require("lspconfig")
 
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 ensure_installed = { "shellcheck" }
@@ -79,72 +79,48 @@ mason_lspconfig.setup({
 		end,
 	},
 })
--- nvim_lspconfig.setup({
--- 	function()
--- 		---@class PluginLspOpts
--- 		local ret = {
--- 			---@type vim.diagnostic.Opts
--- 			diagnostics = {
--- 				underline = true,
--- 				update_in_insert = false,
--- 				virtual_text = {
--- 					spacing = 4,
--- 					source = "if_many",
--- 					prefix = "icons",
--- 				},
--- 				severity_sort = true,
--- 			},
--- 			inlay_hints = {
--- 				enabled = true,
--- 			},
--- 			codelens = {
--- 				enabled = true,
--- 			},
--- 			document_highlight = {
--- 				enabled = true,
--- 			},
--- 			capabilities = {
--- 				workspace = {
--- 					fileOperations = {
--- 						didRename = true,
--- 						willRename = true,
--- 					},
--- 				},
--- 			},
--- 			format = {
--- 				formatting_options = nil,
--- 				timeout_ms = nil,
--- 			},
--- 			---@type lspconfig.options
--- 			servers = {
--- 				lua_ls = {
--- 					settings = {
--- 						Lua = {
--- 							workspace = {
--- 								checkThirdParty = false,
--- 							},
--- 							codeLens = {
--- 								enable = true,
--- 							},
--- 							completion = {
--- 								callSnippet = "Replace",
--- 							},
--- 							doc = {
--- 								privateName = { "^_" },
--- 							},
--- 							hint = {
--- 								enable = true,
--- 								setType = false,
--- 								paramType = true,
--- 								paramName = "Disable",
--- 								semicolon = "Disable",
--- 								arrayIndex = "Disable",
--- 							},
--- 						},
--- 					},
--- 				},
--- 			},
--- 		}
--- 		return ret
--- 	end,
--- })
+
+vim.diagnostic.config({
+	underline = true,
+	update_in_insert = false,
+	virtual_text = {
+		spacing = 4,
+		source = "if_many",
+		prefix = "icons",
+	},
+	severity_sort = true,
+})
+
+capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.workspace.fileOperations = {
+	didRename = true,
+	willRename = true,
+}
+
+nvim_lspconfig.lua_ls.setup({
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			workspace = {
+				checkThirdParty = false,
+			},
+			codeLens = {
+				enable = true,
+			},
+			completion = {
+				callSnippet = "Replace",
+			},
+			doc = {
+				privateName = { "^_" },
+			},
+			hint = {
+				enable = true,
+				setType = false,
+				paramType = true,
+				paramName = "Disable",
+				semicolon = "Disable",
+				arrayIndex = "Disable",
+			},
+		},
+	},
+})
