@@ -61,3 +61,4 @@ export PATH="/opt/homebrew/opt/cython/bin:$PATH"
 
 # fnm
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
