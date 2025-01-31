@@ -1,5 +1,4 @@
 font-family = "JetBrainsMono Nerd Font Mono"
 theme = tokyonight-storm
-mouse-shift-capture = true
 auto-update = off
 macos-titlebar-style = tabs

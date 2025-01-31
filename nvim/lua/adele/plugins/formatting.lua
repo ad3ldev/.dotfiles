@@ -33,6 +33,7 @@ return {
 			lua = { "stylua" },
 			css = { "prettier" },
 			html = { "prettier" },
+			json = { "prettier" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			javascriptreact = { "prettier" },

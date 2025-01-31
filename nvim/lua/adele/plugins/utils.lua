@@ -9,13 +9,6 @@ return {
 		keys = function()
 			local keys = {
 				{
-					"<leader>H",
-					function()
-						require("harpoon"):list():add()
-					end,
-					desc = "Harpoon File",
-				},
-				{
 					"<leader>h",
 					function()
 						local harpoon = require("harpoon")
@@ -180,6 +173,30 @@ return {
 				end,
 				desc = "Next Trouble/Quickfix Item",
 			},
+		},
+	},
+	{
+		"mistweaverco/kulala.nvim",
+		ft = "http",
+		opts = {},
+		keys = {
+			{ "<leader>HR", mode = "n", desc = "+Rest" }, -- Fixed the empty command
+			{ "<leader>HRb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad" },
+			{ "<leader>HRc", "<cmd>lua require('kulala').copy()<cr>", desc = "Copy as cURL" },
+			{ "<leader>HRC", "<cmd>lua require('kulala').from_curl()<cr>", desc = "Paste from curl" },
+			{
+				"<leader>HRg",
+				"<cmd>lua require('kulala').download_graphql_schema()<cr>",
+				desc = "Download GraphQL schema",
+			},
+			{ "<leader>HRi", "<cmd>lua require('kulala').inspect()<cr>", desc = "Inspect current request" },
+			{ "<leader>HRn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
+			{ "<leader>HRp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
+			{ "<leader>HRq", "<cmd>lua require('kulala').close()<cr>", desc = "Close window" },
+			{ "<leader>HRr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request" },
+			{ "<leader>HRs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
+			{ "<leader>HRS", "<cmd>lua require('kulala').show_stats()<cr>", desc = "Show stats" },
+			{ "<leader>HRt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
 		},
 	},
 }
