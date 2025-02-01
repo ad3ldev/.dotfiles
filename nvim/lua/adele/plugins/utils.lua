@@ -199,4 +199,54 @@ return {
 			{ "<leader>HRt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
 		},
 	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_compiler_latexmk = {
+				executable = "tectonic", -- use Tectonic instead of latexmk
+				build_dir = "", -- use the current directory for auxiliary files
+				options = {
+					"--synctex", -- enable SyncTeX for forward/inverse search
+					"--keep-logs", -- optionally keep log files
+					"--keep-intermediates", -- optionally keep intermediate files
+				},
+				continuous = 0, -- disable continuous compilation (Tectonic doesn’t support it)
+				callback = 1, -- enable VimTeX callbacks (for status updates)
+			}
+		end,
+	},
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			dashboard = { enabled = true },
+			notifier = { enabled = true },
+			quickfile = { enabled = true },
+			statuscolumn = { enabled = true },
+			words = { enabled = true },
+			terminal = { enabled = true },
+		},
+		keys = {
+			{
+				"<leader>lg",
+				function()
+					Snacks.lazygit()
+				end,
+				desc = "lazygit",
+			},
+			{
+				"<leader>fT",
+				function()
+					Snacks.terminal.toggle()
+				end,
+				desc = "Toggle terminal",
+			},
+		},
+	},
 }
