@@ -124,3 +124,11 @@ nvim_lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+nvim_lspconfig.gopls.setup({
+	settings = {
+		gopls = {
+			completeUnimported = true,
+		},
+	},
+})

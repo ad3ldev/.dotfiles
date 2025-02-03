@@ -34,10 +34,6 @@ return {
 		"mbbill/undotree",
 	},
 	{
-		"fladson/vim-kitty",
-		ft = "kitty",
-	},
-	{
 		"tpope/vim-sleuth",
 	},
 	{
