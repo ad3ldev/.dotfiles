@@ -216,36 +216,6 @@ return {
 		end,
 	},
 	{
-		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
-		opts = {
-			bigfile = { enabled = true },
-			dashboard = { enabled = true },
-			notifier = { enabled = true },
-			quickfile = { enabled = true },
-			statuscolumn = { enabled = true },
-			words = { enabled = true },
-			terminal = { enabled = true },
-		},
-		keys = {
-			{
-				"<leader>lg",
-				function()
-					Snacks.lazygit()
-				end,
-				desc = "lazygit",
-			},
-			{
-				"<leader>fT",
-				function()
-					Snacks.terminal.toggle()
-				end,
-				desc = "Toggle terminal",
-			},
-		},
-	},
-	{
 		"isak102/ghostty.nvim",
 		config = function()
 			require("ghostty").setup()
