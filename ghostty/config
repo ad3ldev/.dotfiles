@@ -2,3 +2,4 @@ font-family = "JetBrainsMono Nerd Font Mono"
 theme = tokyonight-storm
 auto-update = off
 macos-titlebar-style = tabs
+mouse-hide-while-typing = true
