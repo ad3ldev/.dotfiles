@@ -1,7 +1,6 @@
 local tokyonight = require("tokyonight")
 local lualine = require("lualine")
 local barbecue = require("barbecue")
-local ibl = require("ibl")
 
 tokyonight.setup({
 	on_colors = function(colors)
@@ -17,9 +16,6 @@ lualine.setup({
 })
 barbecue.setup({
 	theme = "tokyonight",
-})
-ibl.setup({
-	scope = { enabled = false },
 })
 
 vim.cmd.colorscheme("tokyonight")

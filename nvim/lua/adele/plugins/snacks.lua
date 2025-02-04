@@ -25,7 +25,21 @@ return {
 			function()
 				Snacks.git.blame_line()
 			end,
-			desc = "Git blame",
+			desc = "Git blame line",
+		},
+		{
+			"<leader>gl",
+			function()
+				Snacks.lazygit.log()
+			end,
+			desc = "Lazygit log",
+		},
+		{
+			"<leader>gf",
+			function()
+				Snacks.lazygit.log_file()
+			end,
+			desc = "Lazygit log current file",
 		},
 		{
 			"<leader>lg",
