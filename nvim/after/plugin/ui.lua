@@ -19,3 +19,9 @@ barbecue.setup({
 })
 
 vim.cmd.colorscheme("tokyonight")
+
+vim.fn.sign_define("DapBreakpoint", { text = "🔴", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "🔴", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "🟠", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapStopped", { text = "🟢", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapLogPoint", { text = "🟡", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })

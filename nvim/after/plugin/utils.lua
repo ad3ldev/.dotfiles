@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+vim.keymap.set("n", "<leader><leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 
 local grug_far = require("grug-far")
 local harpoon = require("harpoon")
