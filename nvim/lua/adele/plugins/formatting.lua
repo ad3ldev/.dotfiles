@@ -1,20 +1,18 @@
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
-	cmd = "ConformInfo",
+	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>cF",
+			"<leader>f",
 			function()
-				require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
-			mode = { "n", "v" },
-			desc = "Format Injected Langs",
+			mode = "",
+			desc = "[F]ormat buffer",
 		},
 	},
 	opts = {
-		async = true,
-		lsp_fallback = true,
 		notify_on_error = false,
 		format_on_save = function(bufnr)
 			local disable_filetypes = {}
@@ -31,13 +29,14 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			css = { "prettier" },
-			html = { "prettier" },
-			json = { "prettier" },
-			javascript = { "prettier" },
-			typescript = { "prettier" },
-			javascriptreact = { "prettier" },
-			typescriptreact = { "prettier" },
+			-- python = { "isort", "black" },
+			css = { "prettierd", "prettier", stop_after_first = true },
+			html = { "prettierd", "prettier", stop_after_first = true },
+			json = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd", "prettier", stop_after_first = true },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
+			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 			go = { "gopls" },
 		},
 	},

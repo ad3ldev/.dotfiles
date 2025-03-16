@@ -1,4 +1,5 @@
 return {
+	{ "tpope/vim-sleuth" },
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	{
 		"nvim-lualine/lualine.nvim",

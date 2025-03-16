@@ -1,5 +1,28 @@
 return {
 	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		cmd = "LazyDev",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+			},
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "williamboman/mason.nvim", opts = {} },
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+
+			{ "j-hui/fidget.nvim", opts = {} },
+			"hrsh7th/cmp-nvim-lsp",
+		},
+	},
+	{
 
 		"williamboman/mason.nvim",
 		cmd = "Mason",
@@ -35,18 +58,6 @@ return {
 			end)
 		end,
 	},
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		cmd = "LazyDev",
-		opts = {
-			library = {
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				{ path = "snacks.nvim", words = { "Snacks" } },
-				{ path = "lazy.nvim", words = { "LazyVim" } },
-			},
-		},
-	},
 	{ -- optional cmp completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
@@ -57,52 +68,7 @@ return {
 			})
 		end,
 	},
-	-- { -- optional blink completion source for require statements and module annotations
-	-- 	"saghen/blink.cmp",
-	-- 	opts = {
-	-- 		sources = {
-	-- 			completion = {
-	-- 				enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
-	-- 			},
-	-- 			providers = {
-	-- 				lsp = { fallback_for = { "lazydev" } },
-	-- 				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 	{ "Bilal2453/luvit-meta", lazy = true },
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
-			{ "williamboman/mason-lspconfig.nvim", config = true },
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ "j-hui/fidget.nvim", opts = {} },
-			"hrsh7th/cmp-nvim-lsp",
-			{
-				"folke/neoconf.nvim",
-				cmd = "Neoconf",
-				opts = {},
-			},
-		},
-	},
-	{
-		"nvimtools/none-ls.nvim",
-		dependencies = { "mason.nvim" },
-		opts = function(_, opts)
-			local nls = require("null-ls")
-			opts.root_dir = opts.root_dir
-				or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
-			opts.sources = vim.list_extend(opts.sources or {}, {
-				nls.builtins.formatting.fish_indent,
-				nls.builtins.diagnostics.fish,
-				nls.builtins.formatting.stylua,
-				nls.builtins.formatting.shfmt,
-			})
-		end,
-	},
 	{
 		"MysticalDevil/inlay-hints.nvim",
 		event = "LspAttach",

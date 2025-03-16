@@ -3,6 +3,7 @@ local surround = require("mini.surround")
 local comment = require("mini.comment")
 local pairs = require("mini.pairs")
 local icons = require("mini.icons")
+
 ai.setup({
 	n_lines = 500,
 	custom_textobjects = {

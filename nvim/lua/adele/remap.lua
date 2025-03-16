@@ -1,5 +1,8 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without overwritting the buffer" })
 
 vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copy to system clipboard" })

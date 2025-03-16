@@ -3,6 +3,7 @@ return {
 	event = "VeryLazy",
 	opts_extend = { "spec" },
 	opts = {
+		delay = 0,
 		icons = {
 			mappings = vim.g.have_nerd_font,
 			keys = vim.g.have_nerd_font and {} or {
@@ -36,7 +37,6 @@ return {
 				F12 = "<F12>",
 			},
 		},
-
 		spec = {
 			mode = { "n", "v" },
 			{ "<leader><tab>", group = "tabs" },
@@ -74,18 +74,11 @@ return {
 	},
 	keys = {
 		{
-			"<leader><leader>?",
+			"<leader>?",
 			function()
 				require("which-key").show({ global = false })
 			end,
 			desc = "Buffer Keymaps (which-key)",
-		},
-		{
-			"<c-w><space>",
-			function()
-				require("which-key").show({ keys = "<c-w>", loop = true })
-			end,
-			desc = "Window Hydra Mode (which-key)",
 		},
 	},
 }
