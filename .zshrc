@@ -40,14 +40,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-eval "$(pyenv virtualenv-init -)"
-
-# pyenv end
 
 eval "$(zoxide init zsh)"
 
@@ -64,3 +56,5 @@ eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
