@@ -16,3 +16,9 @@ vim.keymap.set("n", "<leader>Excute", "<cmd>!chmod +x %<CR>", { silent = true, d
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neotree" })
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+
+vim.keymap.set("n", "n", "nzzzv", { desc = "Search Next" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Search Previous" })

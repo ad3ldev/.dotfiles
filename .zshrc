@@ -52,9 +52,11 @@ eval "$(zoxide init zsh)"
 export PATH="/opt/homebrew/opt/cython/bin:$PATH"
 
 # fnm
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled)"
+
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
