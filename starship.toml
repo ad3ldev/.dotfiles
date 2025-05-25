@@ -4,6 +4,12 @@
 # Remove a blank line between shell prompts
 add_newline = false
 
+[shell]
+fish_indicator = ""
+nu_indicator = "[nu](fg:bright-green)>"
+unknown_indicator = "[?](fg:bright-red)"
+disabled = false
+
 [aws]
 symbol = "  "
 

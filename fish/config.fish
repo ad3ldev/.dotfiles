@@ -7,6 +7,15 @@ set -g fish_greeting
 set -gx EDITOR "nvim"
 set -gx VISUAL "nvim"
 
+# Aliases
+alias vim="nvim"
+alias grep="rg"
+alias find="fd"
+alias cat="bat"
+alias ls="eza"
+alias cd="z"
+# alias du="dust"
+
 # init tools
 starship init fish | source
 zoxide init fish | source

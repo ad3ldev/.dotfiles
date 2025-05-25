@@ -19,9 +19,11 @@ chsh -s "$FISH"
 # - Notion Web Clipper
 # - RunCat
 
-ln -s /Users/adele/Desktop/Dev/.dotfiles/ghostty/ ~/.config/ghostty
-ln -s /Users/adele/Desktop/Dev/.dotfiles/fish/ ~/.config/fish
-ln -s /Users/adele/Desktop/Dev/.dotfiles/nvim/ ~/.config/nvim
+ln -s /Users/adele/Desktop/Dev/.dotfiles/ghostty ~/.config/ghostty
+ln -s /Users/adele/Desktop/Dev/.dotfiles/fish ~/.config/fish
+ln -s /Users/adele/Desktop/Dev/.dotfiles/nvim ~/.config/nvim
+ln -s /Users/adele/Desktop/Dev/.dotfiles/ncspot ~/.config/ncspot
 ln -s /Users/adele/Desktop/Dev/.dotfiles/starship.toml ~/.config/starship.toml
 ln -s /Users/adele/Desktop/Dev/.dotfiles/.gitconfig ~/.gitconfig
 ln -s /Users/adele/Desktop/Dev/.dotfiles/.gitignore_global ~/.gitignore_global
+ln -s /Users/adele/Desktop/Dev/.dotfiles/nushell "/Users/adele/Library/Application Support/nushell"

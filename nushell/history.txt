@@ -1,0 +1,17 @@
+pwd
+ls
+quit
+exit
+config
+config nu
+config rest
+config reset
+config env
+config
+$nu.config-path
+nvim
+:q
+exit
+clear
+whoami
+exit
