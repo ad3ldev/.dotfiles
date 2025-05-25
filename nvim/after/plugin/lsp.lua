@@ -172,3 +172,13 @@ nvim_lspconfig.gopls.setup({
 })
 
 nvim_lspconfig.sourcekit.setup({})
+
+nvim_lspconfig.ts_ls.setup({
+	hostInfo = "neovim",
+	preferences = {
+		includeCompletionsForModuleExports = true,
+		includeCompletionsForImportStatements = true,
+		importModuleSpecifier = "non-relative",
+		importModuleSpecifierPreference = "non-relative",
+	},
+})
