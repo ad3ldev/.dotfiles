@@ -14,7 +14,7 @@ alias find="fd"
 alias cat="bat"
 alias ls="eza"
 alias cd="z"
-# alias du="dust"
+alias du="dust"
 
 # init tools
 starship init fish | source
