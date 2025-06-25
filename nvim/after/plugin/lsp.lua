@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local servers = {
-
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -79,12 +78,9 @@ local mason_lspconfig = require("mason-lspconfig")
 local nvim_lspconfig = require("lspconfig")
 
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-ensure_installed = { "shellcheck" }
+ensure_installed = { "shellcheck", "stylua", "lua_ls", "gopls", "ts_ls", "harper_ls", "prettierd", "jdtls" }
 mason.setup({
-	ensure_installed = { "shellcheck" },
-})
-vim.list_extend(ensure_installed, {
-	"stylua", -- Used to format Lua code
+	ensure_installed = ensure_installed,
 })
 mason_tool_installer.setup({ ensure_installed = ensure_installed })
 mason_lspconfig.setup({
@@ -182,3 +178,14 @@ nvim_lspconfig.ts_ls.setup({
 		importModuleSpecifierPreference = "non-relative",
 	},
 })
+
+-- HARPER CONFIG
+nvim_lspconfig.harper_ls.setup({})
+
+-- JAVA CONFIG
+nvim_lspconfig.jdtls.setup({})
+local config = {
+	cmd = { vim.fn.expand("~/.local/nvim/mason/bin/jdtls") },
+	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+}
+require("jdtls").start_or_attach(config)

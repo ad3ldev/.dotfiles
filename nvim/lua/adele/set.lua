@@ -43,3 +43,6 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.confirm = true
+
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

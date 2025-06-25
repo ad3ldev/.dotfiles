@@ -71,4 +71,5 @@ return {
 		end,
 	},
 	{ "MunifTanjim/nui.nvim", lazy = true },
+	{ "norcalli/nvim-colorizer.lua", lazy = true },
 }

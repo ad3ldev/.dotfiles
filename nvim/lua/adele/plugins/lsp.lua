@@ -77,4 +77,5 @@ return {
 			require("inlay-hints").setup()
 		end,
 	},
+	{ "mfussenegger/nvim-jdtls" },
 }

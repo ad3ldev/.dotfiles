@@ -1,6 +1,7 @@
 local tokyonight = require("tokyonight")
 local lualine = require("lualine")
 local barbecue = require("barbecue")
+local colorizer = require("colorizer")
 
 tokyonight.setup({
 	on_colors = function(colors)
@@ -16,6 +17,7 @@ lualine.setup({
 barbecue.setup({
 	theme = "tokyonight",
 })
+colorizer.setup()
 
 vim.cmd.colorscheme("tokyonight")
 
