@@ -60,25 +60,71 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.workspace.fileOperations = {
+	didRename = true,
+	willRename = true,
+}
+
 local servers = {
 	lua_ls = {
+		capabilities = capabilities,
 		settings = {
 			Lua = {
+				workspace = {
+					checkThirdParty = false,
+				},
+				codeLens = {
+					enable = true,
+				},
 				completion = {
 					callSnippet = "Replace",
 				},
+				doc = {
+					privateName = { "^_" },
+				},
+				hint = {
+					enable = true,
+					setType = false,
+					paramType = true,
+					paramName = "Disable",
+					semicolon = "Disable",
+					arrayIndex = "Disable",
+				},
 			},
 		},
+	},
+	ts_ls = {
+		hostInfo = "neovim",
+		preferences = {
+			includeCompletionsForModuleExports = true,
+			includeCompletionsForImportStatements = true,
+			importModuleSpecifier = "non-relative",
+			importModuleSpecifierPreference = "non-relative",
+		},
+	},
+	gopls = {
+		capabilities = capabilities,
+		settings = {
+			gopls = {
+				completeUnimported = true,
+			},
+		},
+	},
+	sourcekit = {
+		capabilities = capabilities,
+	},
+	jdtls = {
+		capabilities = capabilities,
 	},
 }
 local mason = require("mason")
 local ensure_installed = vim.tbl_keys(servers or {})
 local mason_tool_installer = require("mason-tool-installer")
 local mason_lspconfig = require("mason-lspconfig")
-local nvim_lspconfig = require("lspconfig")
 
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-ensure_installed = { "shellcheck", "stylua", "lua_ls", "gopls", "ts_ls", "harper_ls", "prettierd", "jdtls" }
+ensure_installed = { "shellcheck", "stylua", "lua_ls", "prettierd" }
 mason.setup({
 	ensure_installed = ensure_installed,
 })
@@ -125,67 +171,16 @@ vim.diagnostic.config({
 	},
 })
 
-capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.workspace.fileOperations = {
-	didRename = true,
-	willRename = true,
-}
-
-nvim_lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			workspace = {
-				checkThirdParty = false,
-			},
-			codeLens = {
-				enable = true,
-			},
-			completion = {
-				callSnippet = "Replace",
-			},
-			doc = {
-				privateName = { "^_" },
-			},
-			hint = {
-				enable = true,
-				setType = false,
-				paramType = true,
-				paramName = "Disable",
-				semicolon = "Disable",
-				arrayIndex = "Disable",
-			},
-		},
-	},
-})
-
-nvim_lspconfig.gopls.setup({
-	settings = {
-		gopls = {
-			completeUnimported = true,
-		},
-	},
-})
-
-nvim_lspconfig.sourcekit.setup({})
-
-nvim_lspconfig.ts_ls.setup({
-	hostInfo = "neovim",
-	preferences = {
-		includeCompletionsForModuleExports = true,
-		includeCompletionsForImportStatements = true,
-		importModuleSpecifier = "non-relative",
-		importModuleSpecifierPreference = "non-relative",
-	},
-})
-
--- HARPER CONFIG
-nvim_lspconfig.harper_ls.setup({})
-
 -- JAVA CONFIG
-nvim_lspconfig.jdtls.setup({})
-local config = {
-	cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls") },
-	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-}
-require("jdtls").start_or_attach(config)
+local function setup_jdtls()
+	local config = {
+		cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/jdtls") },
+		root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+	}
+	require("jdtls").start_or_attach(config)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "java",
+	callback = setup_jdtls,
+})
