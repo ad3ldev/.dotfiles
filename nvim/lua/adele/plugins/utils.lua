@@ -127,30 +127,6 @@ return {
 		},
 	},
 	{
-		"mistweaverco/kulala.nvim",
-		ft = "http",
-		opts = {},
-		keys = {
-			{ "<leader>HR", mode = "n", desc = "+Rest" }, -- Fixed the empty command
-			{ "<leader>HRb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad" },
-			{ "<leader>HRc", "<cmd>lua require('kulala').copy()<cr>", desc = "Copy as cURL" },
-			{ "<leader>HRC", "<cmd>lua require('kulala').from_curl()<cr>", desc = "Paste from curl" },
-			{
-				"<leader>HRg",
-				"<cmd>lua require('kulala').download_graphql_schema()<cr>",
-				desc = "Download GraphQL schema",
-			},
-			{ "<leader>HRi", "<cmd>lua require('kulala').inspect()<cr>", desc = "Inspect current request" },
-			{ "<leader>HRn", "<cmd>lua require('kulala').jump_next()<cr>", desc = "Jump to next request" },
-			{ "<leader>HRp", "<cmd>lua require('kulala').jump_prev()<cr>", desc = "Jump to previous request" },
-			{ "<leader>HRq", "<cmd>lua require('kulala').close()<cr>", desc = "Close window" },
-			{ "<leader>HRr", "<cmd>lua require('kulala').replay()<cr>", desc = "Replay the last request" },
-			{ "<leader>HRs", "<cmd>lua require('kulala').run()<cr>", desc = "Send the request" },
-			{ "<leader>HRS", "<cmd>lua require('kulala').show_stats()<cr>", desc = "Show stats" },
-			{ "<leader>HRt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body" },
-		},
-	},
-	{
 		"lervag/vimtex",
 		lazy = false, -- we don't want to lazy load VimTeX
 		-- tag = "v2.15", -- uncomment to pin to a specific release
@@ -175,5 +151,14 @@ return {
 		config = function()
 			require("ghostty").setup()
 		end,
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
 	},
 }

@@ -7,18 +7,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = false,
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-		opts = {
-			-- configurations go here
-		},
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -72,4 +60,16 @@ return {
 	},
 	{ "MunifTanjim/nui.nvim", lazy = true },
 	{ "norcalli/nvim-colorizer.lua", lazy = true },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
 }

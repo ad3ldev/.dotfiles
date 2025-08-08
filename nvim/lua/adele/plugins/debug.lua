@@ -1,19 +1,89 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		dependencies = {
-			"leoluz/nvim-dap-go",
-			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
-			"nvim-neotest/nvim-nio",
-			"williamboman/mason.nvim",
+		keys = {
+			{
+				"<leader>db",
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				desc = "Toggle Breakpoint",
+			},
+			{
+				"<F5>",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Continue",
+			},
+			{
+				"<F10>",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "Step Over",
+			},
+			{
+				"<F11>",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Step Into",
+			},
+			{
+				"<F12>",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "Step Out",
+			},
+			{
+				"<leader>dC",
+				function()
+					require("dap").run_to_cursor()
+				end,
+				desc = "Run to Cursor",
+			},
+			{
+				"<leader>dT",
+				function()
+					require("dap").terminate()
+				end,
+				desc = "Terminate",
+			},
+			{
+				"<leader>dB",
+				function()
+					require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+				end,
+				desc = "Breakpoint Condition",
+			},
+			{
+				"<leader>dL",
+				function()
+					require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+				end,
+				desc = "Log point message",
+			},
+			{
+				"<leader>dr",
+				function()
+					require("dap").repl.open()
+				end,
+				desc = "Open Repl",
+			},
+			{
+				"<leader>dl",
+				function()
+					require("dap").run_last()
+				end,
+				desc = "Run Last",
+			},
 		},
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
-			local dapgo = require("dap-go")
 
 			dapui.setup()
-			dapgo.setup()
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
@@ -29,22 +99,74 @@ return {
 				dapui.close()
 			end
 			-- Include everything after this
-
-			-- Key mappings
-			vim.keymap.set("n", "<F5>", dap.continue)
-			vim.keymap.set("n", "<F10>", dap.step_over)
-			vim.keymap.set("n", "<F11>", dap.step_into)
-			vim.keymap.set("n", "<F12>", dap.step_out)
-			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<leader>dB", function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end)
-			vim.keymap.set("n", "<leader>dL", function()
-				require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
-			end)
-			vim.keymap.set("n", "<leader>dr", require("dap").repl.open)
-			vim.keymap.set("n", "<leader>dl", require("dap").run_last)
-			vim.keymap.set("n", "<leader>du", dapui.toggle)
 		end,
+	},
+
+	{
+		"rcarriga/nvim-dap-ui",
+		config = true,
+		keys = {
+			{
+				"<leader>du",
+				function()
+					require("dapui").toggle({})
+				end,
+				desc = "Dap UI",
+			},
+		},
+		dependencies = {
+			{
+				"jay-babu/mason-nvim-dap.nvim",
+				---@type MasonNvimDapSettings
+				opts = {
+					handlers = {},
+					automatic_installation = false,
+					ensure_installed = {},
+				},
+				dependencies = {
+					"mfussenegger/nvim-dap",
+					"mason-org/mason.nvim",
+				},
+			},
+			-- keep-sorted end
+		},
+	},
+	-- LANGUAGES
+	{
+		"leoluz/nvim-dap-go",
+		config = true,
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		keys = {
+			{
+				"<leader>dt",
+				function()
+					require("dap-go").debug_test()
+				end,
+				desc = "Debug test",
+			},
+		},
+	},
+	{
+		"mfussenegger/nvim-dap-python",
+		lazy = true,
+		config = function()
+			local python = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+			require("dap-python").setup(python)
+		end,
+		-- Consider the mappings at
+		-- https://github.com/mfussenegger/nvim-dap-python?tab=readme-ov-file#mappings
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+	},
+	{ "nvim-neotest/nvim-nio" },
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		config = true,
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
 	},
 }
