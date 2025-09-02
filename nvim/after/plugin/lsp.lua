@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.workspace.fileOperations = {
 	didRename = true,
 	willRename = true,
@@ -104,6 +103,15 @@ local servers = {
 			importModuleSpecifierPreference = "non-relative",
 		},
 	},
+	eslint = {
+		capabilities = capabilities,
+		settings = {
+			provide = "eslint_d", -- Use eslint_d as the server
+			server = {
+				args = { "--stdio" },
+			},
+		},
+	},
 	gopls = {
 		capabilities = capabilities,
 		settings = {
@@ -124,7 +132,7 @@ local ensure_installed = vim.tbl_keys(servers or {})
 local mason_tool_installer = require("mason-tool-installer")
 local mason_lspconfig = require("mason-lspconfig")
 
-ensure_installed = { "shellcheck", "stylua", "lua_ls", "prettierd" }
+ensure_installed = { "shellcheck", "stylua", "lua_ls", "prettierd", "eslint_d" }
 mason.setup({
 	ensure_installed = ensure_installed,
 })

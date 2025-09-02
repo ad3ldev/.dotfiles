@@ -4,11 +4,11 @@ return {
 	cmd = { "ConformInfo" },
 	keys = {
 		{
-			"<leader>f",
+			"<leader>F",
 			function()
 				require("conform").format({ async = true, lsp_format = "fallback" })
 			end,
-			mode = "",
+			mode = { "n", "v" },
 			desc = "[F]ormat buffer",
 		},
 	},
@@ -24,19 +24,20 @@ return {
 			end
 			return {
 				timeout_ms = 500,
+				async = false,
 				lsp_format = lsp_format_opt,
 			}
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "isort", "ruff" },
-			css = { "prettierd", stop_after_first = true },
-			html = { "prettierd", stop_after_first = true },
-			json = { "prettierd", stop_after_first = true },
-			javascript = { "prettierd", stop_after_first = true },
-			typescript = { "prettierd", stop_after_first = true },
-			javascriptreact = { "prettierd", stop_after_first = true },
-			typescriptreact = { "prettierd", stop_after_first = true },
+			css = { "prettierd", "eslint_d" },
+			html = { "prettierd", "eslint_d" },
+			json = { "prettierd", "eslint_d" },
+			javascript = { "prettierd", "eslint_d" },
+			typescript = { "prettierd", "eslint_d" },
+			javascriptreact = { "prettierd", "eslint_d" },
+			typescriptreact = { "prettierd", "eslint_d" },
 			go = { "gopls" },
 		},
 	},

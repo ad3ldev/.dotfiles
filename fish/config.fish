@@ -4,8 +4,11 @@ end
 
 # Variables setting 
 set -g fish_greeting
-set -gx EDITOR "nvim"
-set -gx VISUAL "nvim"
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
+# # Add Go bin to PATH
+set -gx PATH $PATH (go env GOPATH)/bin
 
 # Aliases
 alias vim="nvim"
