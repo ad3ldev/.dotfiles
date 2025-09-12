@@ -192,3 +192,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "java",
 	callback = setup_jdtls,
 })
+
+-- GLEAM CONFIG
+require("lspconfig").gleam.setup({})

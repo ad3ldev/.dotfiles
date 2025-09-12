@@ -127,26 +127,6 @@ return {
 		},
 	},
 	{
-		"lervag/vimtex",
-		lazy = false, -- we don't want to lazy load VimTeX
-		-- tag = "v2.15", -- uncomment to pin to a specific release
-		init = function()
-			-- VimTeX configuration goes here, e.g.
-			vim.g.vimtex_view_method = "zathura"
-			vim.g.vimtex_compiler_latexmk = {
-				executable = "tectonic", -- use Tectonic instead of latexmk
-				build_dir = "", -- use the current directory for auxiliary files
-				options = {
-					"--synctex", -- enable SyncTeX for forward/inverse search
-					"--keep-logs", -- optionally keep log files
-					"--keep-intermediates", -- optionally keep intermediate files
-				},
-				continuous = 0, -- disable continuous compilation (Tectonic doesn’t support it)
-				callback = 1, -- enable VimTeX callbacks (for status updates)
-			}
-		end,
-	},
-	{
 		"isak102/ghostty.nvim",
 		config = function()
 			require("ghostty").setup()
@@ -160,5 +140,52 @@ return {
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
+	},
+	{
+		"3rd/image.nvim",
+		build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+		opts = {
+			processor = "magick_cli",
+		},
+	},
+	{
+		"3rd/diagram.nvim",
+		dependencies = {
+			{ "3rd/image.nvim", opts = {} }, -- you'd probably want to configure image.nvim manually instead of doing this
+		},
+		opts = { -- you can just pass {}, defaults below
+			events = {
+				render_buffer = { "InsertLeave", "BufWinEnter", "TextChanged" },
+				clear_buffer = { "BufLeave" },
+			},
+			renderer_options = {
+				mermaid = {
+					background = nil, -- nil | "transparent" | "white" | "#hex"
+					theme = nil, -- nil | "default" | "dark" | "forest" | "neutral"
+					scale = 1, -- nil | 1 (default) | 2  | 3 | ...
+					width = nil, -- nil | 800 | 400 | ...
+					height = nil, -- nil | 600 | 300 | ...
+					cli_args = nil, -- nil | { "--no-sandbox" } | { "-p", "/path/to/puppeteer" } | ...
+				},
+				plantuml = {
+					charset = nil,
+					cli_args = nil, -- nil | { "-Djava.awt.headless=true" } | ...
+				},
+				d2 = {
+					theme_id = nil,
+					dark_theme_id = nil,
+					scale = nil,
+					layout = nil,
+					sketch = nil,
+					cli_args = nil, -- nil | { "--pad", "0" } | ...
+				},
+				gnuplot = {
+					size = nil, -- nil | "800,600" | ...
+					font = nil, -- nil | "Arial,12" | ...
+					theme = nil, -- nil | "light" | "dark" | custom theme string
+					cli_args = nil, -- nil | { "-p" } | { "-c", "config.plt" } | ...
+				},
+			},
+		},
 	},
 }
