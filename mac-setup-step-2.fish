@@ -24,7 +24,7 @@ echo ""
 # Create symbolic links for dotfiles
 echo "🔗 Creating symbolic links for dotfiles..."
 
-set dotfiles_path "/Users/adele/Desktop/Dev/.dotfiles"
+set dotfiles_path "/Users/adele/Personal/Dev/.dotfiles"
 set config_path "$HOME/.config"
 
 # Ensure .config directory exists
