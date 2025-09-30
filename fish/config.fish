@@ -2,6 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Create aliases for explicit architecture selection
+alias brew_x86 'arch -x86_64 /usr/local/bin/brew'
+alias ibrew 'arch -x86_64 /usr/local/bin/brew'
+
 # Variables setting 
 set -g fish_greeting
 set -gx EDITOR nvim
@@ -27,7 +31,6 @@ zoxide init fish | source
 fzf --fish | source
 thefuck --alias | source
 fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell fish | source
-
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
