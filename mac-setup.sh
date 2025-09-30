@@ -16,12 +16,6 @@ echo "🍺 Installing Homebrew..."
 echo "⚙️ Installing Zinit..."
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
-echo "✅ Initial setup complete!"
-
-# macOS Development Environment Setup Script
-# This script sets up development tools and dotfiles
-echo "��� Starting macOS development environment setup..."
-
 # Install from Brewfile
 brew bundle
 
@@ -44,25 +38,25 @@ mkdir -p "$config_path"
 
 # Create symlinks
 echo "   Linking ghostty config..."
-ln -sf $dotfiles_path/ghostty $config_path/ghostty
+ln -sf "$dotfiles_path/ghostty" "$config_path/ghostty"
 
 echo "   Linking zsh config..."
-ln -sf $dotfiles_path/.zshrc ~/.zshrc
+ln -sf "$dotfiles_path/.zshrc" "$HOME/.zshrc"
 
 echo "   Linking neovim config..."
-ln -sf $dotfiles_path/nvim $config_path/nvim
+ln -sf "$dotfiles_path/nvim" "$config_path/nvim"
 
 echo "   Linking starship config..."
-ln -sf $dotfiles_path/starship.toml $config_path/starship.toml
+ln -sf "$dotfiles_path/starship.toml" "$config_path/starship.toml"
 
 echo "   Linking git config..."
-ln -sf $dotfiles_path/.gitconfig $HOME/.gitconfig
+ln -sf "$dotfiles_path/.gitconfig" "$HOME/.gitconfig"
 
 echo "   Linking global gitignore..."
-ln -sf $dotfiles_path/.gitignore_global $HOME/.gitignore_global
+ln -sf "$dotfiles_path/.gitignore_global" "$HOME/.gitignore_global"
 
 echo "   Linking nushell config..."
-ln -sf $dotfiles_path/nushell "$HOME/Library/Application Support/nushell"
+ln -sf "$dotfiles_path/nushell" "$HOME/Library/Application Support/nushell"
 
 echo "✅ Setup complete!"
 echo "🔄 You may need to restart your terminal or run 'source ~/.zshrc' to apply changes."
