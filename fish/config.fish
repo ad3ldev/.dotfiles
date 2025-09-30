@@ -37,5 +37,5 @@ fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/Users/adele/.opam/opam-init/init.fish' && source '/Users/adele/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+test -r '/Users/adele/.opam/opam-init/init.fish' && source '/Users/adele/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
 # END opam configuration
