@@ -40,7 +40,7 @@ dotfiles_path="/Users/adele/Personal/Dev/.dotfiles"
 config_path="$HOME/.config"
 
 # Ensure .config directory exists
-mkdir -p $config_path
+mkdir -p "$config_path"
 
 # Create symlinks
 echo "   Linking ghostty config..."

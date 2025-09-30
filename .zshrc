@@ -6,6 +6,8 @@ fi
 # Aliases
 alias ls='eza'
 alias vim='nvim'
+alias grep='rg'
+alias cat='bat'
 
 ### Start of Zinit's installer chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
