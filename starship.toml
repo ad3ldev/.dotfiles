@@ -4,8 +4,13 @@
 # Remove a blank line between shell prompts
 add_newline = false
 
+[env_var]
+variable = "SHELL_ARCH"
+style = "bold yellow"
+format = "[$env_value]($style) "
+
 [shell]
-fish_indicator = ""
+zsh_indicator = ""
 nu_indicator = "[nu](fg:bright-green)>"
 unknown_indicator = "[?](fg:bright-red)"
 disabled = false
