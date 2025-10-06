@@ -1,7 +1,11 @@
 if [[ $(arch) == 'i386' ]]; then
-  export SHELL_ARCH="x86_64"
+  export SHELL_ARCH="🖥️ x86_64"
   echo '============ x86_64 ============='
 fi
+
+# Go Path
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Aliases
 alias ls='eza'
@@ -45,6 +49,7 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::brew
 zinit snippet OMZP::macos
+zinit snippet OMZP::direnv
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -79,3 +84,4 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color $realpath'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
