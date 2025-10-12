@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Copy to system clipboard" })
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete to void register" })
 vim.keymap.set("v", "<leader>d", '"_d', { desc = "Delete to void register" })
 
-vim.keymap.set("n", "<leader>Excute", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Change to executable file" })
+vim.keymap.set("n", "<leader>Chmod", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Change to executable file" })
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neotree" })
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })

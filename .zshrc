@@ -5,7 +5,8 @@ fi
 
 # Go Path
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export UVPATH="$HOME/.local/bin"
+export PATH="$PATH:$GOPATH/bin:$UVPATH"
 
 # Aliases
 alias ls='eza'
@@ -85,3 +86,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color $realpath'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
+
+# SDK Man
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"

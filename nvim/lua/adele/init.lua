@@ -1,3 +1,4 @@
+require("adele.config")
 require("adele.set")
 require("adele.remap")
 require("adele.autocmd")

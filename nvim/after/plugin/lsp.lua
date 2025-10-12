@@ -59,8 +59,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local blink_capabilities = {
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		},
+	},
+}
+
+blink_capabilities = require("blink.cmp").get_lsp_capabilities(blink_capabilities)
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+capabilities = vim.tbl_deep_extend("force", capabilities, blink_capabilities)
 capabilities.workspace.fileOperations = {
 	didRename = true,
 	willRename = true,

@@ -42,6 +42,7 @@ ln -sf "$dotfiles_path/ghostty" "$config_path/ghostty"
 
 echo "   Linking zsh config..."
 ln -sf "$dotfiles_path/.zshrc" "$HOME/.zshrc"
+ln -sf "$dotfiles_path/.zshenv" "$HOME/.zshenv"
 
 echo "   Linking neovim config..."
 ln -sf "$dotfiles_path/nvim" "$config_path/nvim"
