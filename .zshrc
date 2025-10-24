@@ -6,13 +6,10 @@ fi
 # Go Path
 export GOPATH="$HOME/go"
 export UVPATH="$HOME/.local/bin"
-export PATH="$PATH:$GOPATH/bin:$UVPATH"
+export RUSTUP_PATH="$(brew --prefix rustup)/bin"
+export RUSTUP_BIN_PATH="/opt/homebrew/opt/rustup/bin"
+export PATH="$PATH:$GOPATH/bin:$UVPATH:$RUSTUP_PATH:$RUSTUP_BIN_PATH"
 
-# Aliases
-alias ls='eza'
-alias vim='nvim'
-alias grep='rg'
-alias cat='bat'
 
 ### Start of Zinit's installer chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -90,3 +87,10 @@ eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled
 # SDK Man
 export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
+# Aliases
+alias ls='eza'
+alias vim='nvim'
+alias grep='rg'
+alias cat='bat'
+alias find='fd'
