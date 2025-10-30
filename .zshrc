@@ -91,6 +91,3 @@ export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 # Aliases
 alias ls='eza'
 alias vim='nvim'
-alias grep='rg'
-alias cat='bat'
-alias find='fd'

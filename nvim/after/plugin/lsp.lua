@@ -153,6 +153,10 @@ mason_lspconfig.setup({
 	automatic_installation = true,
 	handlers = {
 		function(server_name)
+			-- if server_name == "rust_analyzer" or server_name == "rust-analyzer" then
+			-- 	return
+			-- end
+
 			local server = servers[server_name] or {}
 			-- This handles overriding only values explicitly passed
 			-- by the server configuration above. Useful when disabling

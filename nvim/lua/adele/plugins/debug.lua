@@ -17,7 +17,21 @@ return {
 				desc = "Continue",
 			},
 			{
+				"<leader>dc",
+				function()
+					require("dap").continue()
+				end,
+				desc = "Continue",
+			},
+			{
 				"<F10>",
+				function()
+					require("dap").step_over()
+				end,
+				desc = "Step Over",
+			},
+			{
+				"<leader>dj",
 				function()
 					require("dap").step_over()
 				end,
@@ -31,7 +45,21 @@ return {
 				desc = "Step Into",
 			},
 			{
+				"<leader>dl",
+				function()
+					require("dap").step_into()
+				end,
+				desc = "Step Into",
+			},
+			{
 				"<F12>",
+				function()
+					require("dap").step_out()
+				end,
+				desc = "Step Out",
+			},
+			{
+				"<leader>dk",
 				function()
 					require("dap").step_out()
 				end,
@@ -73,7 +101,7 @@ return {
 				desc = "Open Repl",
 			},
 			{
-				"<leader>dl",
+				"<leader>dR",
 				function()
 					require("dap").run_last()
 				end,
