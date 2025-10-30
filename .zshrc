@@ -3,13 +3,14 @@ if [[ $(arch) == 'i386' ]]; then
   echo '============ x86_64 ============='
 fi
 
-# Go Path
+# Paths
 export GOPATH="$HOME/go"
 export UVPATH="$HOME/.local/bin"
 export RUSTUP_PATH="$(brew --prefix rustup)/bin"
 export RUSTUP_BIN_PATH="/opt/homebrew/opt/rustup/bin"
-export PATH="$PATH:$GOPATH/bin:$UVPATH:$RUSTUP_PATH:$RUSTUP_BIN_PATH"
+export RUBY_PATH="/opt/homebrew/opt/ruby/bin"
 
+export PATH="$GOPATH/bin:$UVPATH:$RUSTUP_PATH:$RUSTUP_BIN_PATH:$RUBY_PATH:$PATH"
 
 ### Start of Zinit's installer chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"

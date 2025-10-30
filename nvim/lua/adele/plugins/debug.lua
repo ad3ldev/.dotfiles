@@ -107,6 +107,13 @@ return {
 				end,
 				desc = "Run Last",
 			},
+			{
+				"<Leader>dt",
+				function()
+					vim.cmd("RustLsp testables")
+				end,
+				desc = "Debugger Rsut testables",
+			},
 		},
 		config = function()
 			local dap, dapui = require("dap"), require("dapui")
